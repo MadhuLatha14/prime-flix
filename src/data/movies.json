@@ -1,0 +1,168 @@
+
+{
+  "featured": {
+    "id": "f1",
+    "title": "The Crown",
+    "description": "Follows the political rivalries and romance of Queen Elizabeth II's reign and the events that shaped the second half of the twentieth century.",
+    "poster": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1920&h=1080&fit=crop",
+    "backdrop": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1920&h=1080&fit=crop",
+    "genre": "Drama",
+    "rating": "8.7",
+    "year": "2023",
+    "duration": "55 min"
+  },
+  "trending": [
+    {
+      "id": "1",
+      "title": "Stranger Things",
+      "poster": "https://images.unsplash.com/photo-1518877593221-1f28583780b4?w=300&h=450&fit=crop",
+      "genre": "Sci-Fi",
+      "rating": "8.9",
+      "year": "2023",
+      "description": "A group of young friends witness supernatural forces and secret government exploits."
+    },
+    {
+      "id": "2",
+      "title": "The Mandalorian",
+      "poster": "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=300&h=450&fit=crop",
+      "genre": "Action",
+      "rating": "8.7",
+      "year": "2023",
+      "description": "A lone bounty hunter makes his way through the outer reaches of the galaxy."
+    },
+    {
+      "id": "3",
+      "title": "House of Cards",
+      "poster": "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=300&h=450&fit=crop",
+      "genre": "Drama",
+      "rating": "8.6",
+      "year": "2023",
+      "description": "A political thriller about power and corruption in Washington D.C."
+    },
+    {
+      "id": "4",
+      "title": "Black Mirror",
+      "poster": "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=300&h=450&fit=crop",
+      "genre": "Thriller",
+      "rating": "8.8",
+      "year": "2023",
+      "description": "An anthology series exploring twisted, high-tech near-future scenarios."
+    },
+    {
+      "id": "5",
+      "title": "The Witcher",
+      "poster": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=300&h=450&fit=crop",
+      "genre": "Fantasy",
+      "rating": "8.5",
+      "year": "2023",
+      "description": "A monster hunter struggles to find his place in a world."
+    }
+  ],
+  "popular": [
+    {
+      "id": "6",
+      "title": "Breaking Bad",
+      "poster": "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=300&h=450&fit=crop",
+      "genre": "Crime",
+      "rating": "9.5",
+      "year": "2023",
+      "description": "A high school chemistry teacher turned methamphetamine manufacturer."
+    },
+    {
+      "id": "7",
+      "title": "Game of Thrones",
+      "poster": "https://images.unsplash.com/photo-1518877593221-1f28583780b4?w=300&h=450&fit=crop",
+      "genre": "Fantasy",
+      "rating": "9.2",
+      "year": "2023",
+      "description": "Nine noble families fight for control over the mythical lands of Westeros."
+    },
+    {
+      "id": "8",
+      "title": "Money Heist",
+      "poster": "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=300&h=450&fit=crop",
+      "genre": "Crime",
+      "rating": "8.7",
+      "year": "2023",
+      "description": "A criminal mastermind leads a resistance as he plans the perfect heist."
+    },
+    {
+      "id": "9",
+      "title": "Ozark",
+      "poster": "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=300&h=450&fit=crop",
+      "genre": "Crime",
+      "rating": "8.4",
+      "year": "2023",
+      "description": "A financial advisor relocates his family to the Missouri Ozarks."
+    },
+    {
+      "id": "10",
+      "title": "Narcos",
+      "poster": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=300&h=450&fit=crop",
+      "genre": "Crime",
+      "rating": "8.8",
+      "year": "2023",
+      "description": "The true story of the rise and fall of Colombian drug lord Pablo Escobar."
+    }
+  ],
+  "action": [
+    {
+      "id": "11",
+      "title": "John Wick",
+      "poster": "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=300&h=450&fit=crop",
+      "genre": "Action",
+      "rating": "7.4",
+      "year": "2023",
+      "description": "An ex-hitman comes out of retirement to track down the gangsters."
+    },
+    {
+      "id": "12",
+      "title": "Mad Max",
+      "poster": "https://images.unsplash.com/photo-1518877593221-1f28583780b4?w=300&h=450&fit=crop",
+      "genre": "Action",
+      "rating": "8.1",
+      "year": "2023",
+      "description": "In a post-apocalyptic wasteland, Max teams up with a mysterious woman."
+    }
+  ],
+  "drama": [
+    {
+      "id": "13",
+      "title": "The Sopranos",
+      "poster": "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=300&h=450&fit=crop",
+      "genre": "Drama",
+      "rating": "9.2",
+      "year": "2023",
+      "description": "A mobster juggles family life and organized crime leadership."
+    },
+    {
+      "id": "14",
+      "title": "Better Call Saul",
+      "poster": "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=300&h=450&fit=crop",
+      "genre": "Drama",
+      "rating": "8.8",
+      "year": "2023",
+      "description": "The transformation of Jimmy McGill into criminal lawyer Saul Goodman."
+    }
+  ],
+  "comedy": [
+    {
+      "id": "15",
+      "title": "The Office",
+      "poster": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=300&h=450&fit=crop",
+      "genre": "Comedy",
+      "rating": "8.9",
+      "year": "2023",
+      "description": "A mockumentary on a group of typical office workers."
+    },
+    {
+      "id": "16",
+      "title": "Friends",
+      "poster": "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=300&h=450&fit=crop",
+      "genre": "Comedy",
+      "rating": "8.8",
+      "year": "2023",
+      "description": "Follows the personal and professional lives of six friends."
+    }
+  ]
+}
