@@ -1,6 +1,7 @@
 
 import React, { useRef } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 import MovieCard from './MovieCard';
 
 interface Movie {
@@ -19,6 +20,7 @@ interface CarouselProps {
 }
 
 const Carousel = ({ title, movies }: CarouselProps) => {
+  const { theme } = useTheme();
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -33,19 +35,19 @@ const Carousel = ({ title, movies }: CarouselProps) => {
 
   return (
     <div className="group relative">
-      <h2 className="text-2xl font-bold text-white mb-4">{title}</h2>
+      <h2 className={`text-2xl font-bold ${theme.text} mb-4 transition-colors duration-300`}>{title}</h2>
       
       {/* Navigation Buttons */}
       <button
         onClick={() => scroll('left')}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/80 text-white p-2 rounded-r-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-blue-600 text-white p-2 rounded-r-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform hover:scale-110"
       >
         <ArrowLeft className="h-6 w-6" />
       </button>
       
       <button
         onClick={() => scroll('right')}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/80 text-white p-2 rounded-l-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-blue-600 text-white p-2 rounded-l-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform hover:scale-110"
       >
         <ArrowRight className="h-6 w-6" />
       </button>
@@ -53,7 +55,7 @@ const Carousel = ({ title, movies }: CarouselProps) => {
       {/* Movies Container */}
       <div
         ref={scrollRef}
-        className="flex space-x-4 overflow-x-auto scrollbar-hide scroll-smooth"
+        className="flex space-x-4 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {movies.map((movie, index) => (
