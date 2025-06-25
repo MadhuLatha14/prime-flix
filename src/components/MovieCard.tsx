@@ -94,11 +94,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
     };
   }, []);
 
-  const handleClick = () => {
-    const event = new CustomEvent('openPreviewModal', { detail: movie });
-    window.dispatchEvent(event);
-  };
-
+  // Remove click handler for opening modal - only hover behavior now
   return (
     <div
       className={`group relative min-w-[280px] cursor-pointer transition-all duration-500 ease-out ${
@@ -106,7 +102,6 @@ const MovieCard = ({ movie }: MovieCardProps) => {
       }`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={handleClick}
     >
       {/* Main Card Container */}
       <div className={`relative overflow-hidden rounded-xl shadow-2xl transition-all duration-500 ${
@@ -124,7 +119,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
             }`}
           />
           
-          {/* Video Preview */}
+          {/* Video Preview - Only shows on hover after 2 seconds */}
           {showVideo && movie.previewVideoUrl && (
             <video
               ref={videoRef}
@@ -186,7 +181,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
         <div className={`absolute top-4 right-4 flex gap-2 transition-all duration-500 ${
           isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
         }`}>
-          {/* Video Controls */}
+          {/* Video Controls - Only show when video is playing */}
           {showVideo && videoLoaded && (
             <button
               onClick={toggleMute}
@@ -209,7 +204,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
           </button>
         </div>
 
-        {/* Play Button Overlay - Show on Hover */}
+        {/* Play Button Overlay - Show on Hover when no video is playing */}
         <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
           isHovered && !showVideo ? 'opacity-100' : 'opacity-0'
         }`}>

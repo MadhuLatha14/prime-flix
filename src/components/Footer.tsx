@@ -22,7 +22,7 @@ const Footer = () => {
               </span>
             </div>
             <p className={theme.textSecondary}>
-              Your premium destination for movies, TV shows, and original content.
+              Your premium destination for movies, TV shows, and original content. Stream unlimited entertainment.
             </p>
             <div className="flex space-x-4">
               <Youtube className={`h-6 w-6 ${theme.textSecondary} hover:text-red-500 cursor-pointer transition-colors duration-200`} />
