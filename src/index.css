@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+/* Modern Streaming Platform Design System */
 
 @layer base {
   :root {
@@ -16,7 +16,7 @@
     --popover: 255 255 255;
     --popover-foreground: 17 24 39;
 
-    --primary: 37 99 235;
+    --primary: 239 68 68;
     --primary-foreground: 255 255 255;
 
     --secondary: 243 244 246;
@@ -33,18 +33,9 @@
 
     --border: 229 231 235;
     --input: 229 231 235;
-    --ring: 37 99 235;
+    --ring: 239 68 68;
 
-    --radius: 0.5rem;
-
-    --sidebar-background: 255 255 255;
-    --sidebar-foreground: 55 65 81;
-    --sidebar-primary: 37 99 235;
-    --sidebar-primary-foreground: 255 255 255;
-    --sidebar-accent: 243 244 246;
-    --sidebar-accent-foreground: 17 24 39;
-    --sidebar-border: 229 231 235;
-    --sidebar-ring: 37 99 235;
+    --radius: 0.75rem;
   }
 
   .dark {
@@ -57,7 +48,7 @@
     --popover: 17 24 39;
     --popover-foreground: 255 255 255;
 
-    --primary: 37 99 235;
+    --primary: 239 68 68;
     --primary-foreground: 255 255 255;
 
     --secondary: 31 41 55;
@@ -74,16 +65,7 @@
 
     --border: 31 41 55;
     --input: 31 41 55;
-    --ring: 59 130 246;
-    
-    --sidebar-background: 17 24 39;
-    --sidebar-foreground: 243 244 246;
-    --sidebar-primary: 59 130 246;
-    --sidebar-primary-foreground: 255 255 255;
-    --sidebar-accent: 31 41 55;
-    --sidebar-accent-foreground: 243 244 246;
-    --sidebar-border: 31 41 55;
-    --sidebar-ring: 59 130 246;
+    --ring: 239 68 68;
   }
 }
 
@@ -93,11 +75,11 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
 }
 
-/* Custom scrollbar hiding */
+/* Custom Scrollbar */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -107,11 +89,11 @@
   display: none;
 }
 
-/* Enhanced animations */
+/* Premium Animations */
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -122,7 +104,7 @@
 @keyframes scale-in {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
@@ -133,7 +115,7 @@
 @keyframes slide-in {
   from {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-30px);
   }
   to {
     opacity: 1;
@@ -141,67 +123,151 @@
   }
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.6);
+  }
+}
+
 .animate-fade-in {
-  animation: fade-in 0.5s ease-out;
+  animation: fade-in 0.6s ease-out;
 }
 
 .animate-scale-in {
-  animation: scale-in 0.3s ease-out;
+  animation: scale-in 0.4s ease-out;
 }
 
 .animate-slide-in {
-  animation: slide-in 0.4s ease-out;
+  animation: slide-in 0.5s ease-out;
 }
 
-/* Smooth scrolling */
+.animate-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+.dark .animate-shimmer {
+  background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+  background-size: 1000px 100%;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Text Effects */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Enhanced Hover Effects */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Remove scrollbar from carousel but keep functionality */
-.carousel-container {
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+/* Card Hover Effects */
+.movie-card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.carousel-container::-webkit-scrollbar {
-  display: none;
+.movie-card:hover {
+  transform: scale(1.05) translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
-/* Enhanced hover effects */
-.hover-glow {
-  transition: all 0.3s ease;
+/* Backdrop Blur Effects */
+.backdrop-blur-strong {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
-.hover-glow:hover {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+/* Loading States */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }
 
-/* Mobile touch improvements */
+.dark .skeleton {
+  background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+  background-size: 200% 100%;
+}
+
+/* Custom Focus States */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-background;
+}
+
+/* Glass Morphism */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Optimizations */
 @media (max-width: 768px) {
   .touch-pan-x {
     touch-action: pan-x;
   }
-}
-
-/* Loading animations */
-@keyframes shimmer {
-  0% {
-    background-position: -200px 0;
-  }
-  100% {
-    background-position: calc(200px + 100%) 0;
+  
+  .movie-card:hover {
+    transform: none;
+    box-shadow: none;
   }
 }
 
-.shimmer {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200px 100%;
-  animation: shimmer 2s infinite;
+/* Performance Optimizations */
+.transform-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
-.dark .shimmer {
-  background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
-  background-size: 200px 100%;
+/* Video Overlays */
+.video-overlay {
+  background: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
 }

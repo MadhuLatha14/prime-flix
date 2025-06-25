@@ -21,7 +21,8 @@
       "genre": "Sci-Fi",
       "rating": "8.9",
       "year": "2023",
-      "description": "A group of young friends witness supernatural forces and secret government exploits."
+      "description": "A group of young friends witness supernatural forces and secret government exploits.",
+      "duration": "45 min"
     },
     {
       "id": "2",
@@ -31,7 +32,8 @@
       "genre": "Action",
       "rating": "8.7",
       "year": "2023",
-      "description": "A lone bounty hunter makes his way through the outer reaches of the galaxy."
+      "description": "A lone bounty hunter makes his way through the outer reaches of the galaxy.",
+      "duration": "35 min"
     },
     {
       "id": "3",
@@ -41,7 +43,8 @@
       "genre": "Drama",
       "rating": "8.6",
       "year": "2023",
-      "description": "A political thriller about power and corruption in Washington D.C."
+      "description": "A political thriller about power and corruption in Washington D.C.",
+      "duration": "50 min"
     },
     {
       "id": "4",
@@ -51,7 +54,8 @@
       "genre": "Thriller",
       "rating": "8.8",
       "year": "2023",
-      "description": "An anthology series exploring twisted, high-tech near-future scenarios."
+      "description": "An anthology series exploring twisted, high-tech near-future scenarios.",
+      "duration": "60 min"
     },
     {
       "id": "5",
@@ -61,7 +65,8 @@
       "genre": "Fantasy",
       "rating": "8.5",
       "year": "2023",
-      "description": "A monster hunter struggles to find his place in a world."
+      "description": "A monster hunter struggles to find his place in a world.",
+      "duration": "55 min"
     }
   ],
   "popular": [
@@ -73,7 +78,8 @@
       "genre": "Crime",
       "rating": "9.5",
       "year": "2023",
-      "description": "A high school chemistry teacher turned methamphetamine manufacturer."
+      "description": "A high school chemistry teacher turned methamphetamine manufacturer.",
+      "duration": "47 min"
     },
     {
       "id": "7",
@@ -83,7 +89,8 @@
       "genre": "Fantasy",
       "rating": "9.2",
       "year": "2023",
-      "description": "Nine noble families fight for control over the mythical lands of Westeros."
+      "description": "Nine noble families fight for control over the mythical lands of Westeros.",
+      "duration": "60 min"
     },
     {
       "id": "8",
@@ -93,7 +100,8 @@
       "genre": "Crime",
       "rating": "8.7",
       "year": "2023",
-      "description": "A criminal mastermind leads a resistance as he plans the perfect heist."
+      "description": "A criminal mastermind leads a resistance as he plans the perfect heist.",
+      "duration": "70 min"
     },
     {
       "id": "9",
@@ -103,7 +111,8 @@
       "genre": "Crime",
       "rating": "8.4",
       "year": "2023",
-      "description": "A financial advisor relocates his family to the Missouri Ozarks."
+      "description": "A financial advisor relocates his family to the Missouri Ozarks.",
+      "duration": "60 min"
     },
     {
       "id": "10",
@@ -113,7 +122,8 @@
       "genre": "Crime",
       "rating": "8.8",
       "year": "2023",
-      "description": "The true story of the rise and fall of Colombian drug lord Pablo Escobar."
+      "description": "The true story of the rise and fall of Colombian drug lord Pablo Escobar.",
+      "duration": "50 min"
     }
   ],
   "action": [
@@ -125,7 +135,8 @@
       "genre": "Action",
       "rating": "7.4",
       "year": "2023",
-      "description": "An ex-hitman comes out of retirement to track down the gangsters."
+      "description": "An ex-hitman comes out of retirement to track down the gangsters.",
+      "duration": "101 min"
     },
     {
       "id": "12",
@@ -135,7 +146,8 @@
       "genre": "Action",
       "rating": "8.1",
       "year": "2023",
-      "description": "In a post-apocalyptic wasteland, Max teams up with a mysterious woman."
+      "description": "In a post-apocalyptic wasteland, Max teams up with a mysterious woman.",
+      "duration": "120 min"
     }
   ],
   "drama": [
@@ -147,7 +159,8 @@
       "genre": "Drama",
       "rating": "9.2",
       "year": "2023",
-      "description": "A mobster juggles family life and organized crime leadership."
+      "description": "A mobster juggles family life and organized crime leadership.",
+      "duration": "55 min"
     },
     {
       "id": "14",
@@ -157,7 +170,8 @@
       "genre": "Drama",
       "rating": "8.8",
       "year": "2023",
-      "description": "The transformation of Jimmy McGill into criminal lawyer Saul Goodman."
+      "description": "The transformation of Jimmy McGill into criminal lawyer Saul Goodman.",
+      "duration": "47 min"
     }
   ],
   "comedy": [
@@ -169,7 +183,8 @@
       "genre": "Comedy",
       "rating": "8.9",
       "year": "2023",
-      "description": "A mockumentary on a group of typical office workers."
+      "description": "A mockumentary on a group of typical office workers.",
+      "duration": "22 min"
     },
     {
       "id": "16",
@@ -179,7 +194,8 @@
       "genre": "Comedy",
       "rating": "8.8",
       "year": "2023",
-      "description": "Follows the personal and professional lives of six friends."
+      "description": "Follows the personal and professional lives of six friends.",
+      "duration": "22 min"
     }
   ]
 }

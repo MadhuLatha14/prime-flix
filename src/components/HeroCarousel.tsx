@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Plus, Info, Volume2, VolumeX } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import moviesData from '../data/movies.json';
 
@@ -8,6 +8,7 @@ const HeroCarousel = () => {
   const { theme } = useTheme();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
 
   // Create featured movies array from different categories
   const featuredMovies = [
@@ -21,7 +22,7 @@ const HeroCarousel = () => {
     if (!isHovered) {
       const interval = setInterval(() => {
         setCurrentSlide((prev) => (prev + 1) % featuredMovies.length);
-      }, 10000);
+      }, 8000);
       return () => clearInterval(interval);
     }
   }, [isHovered, featuredMovies.length]);
@@ -46,25 +47,27 @@ const HeroCarousel = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Background Images with Transition */}
+      {/* Background Images with Smooth Transition */}
       {featuredMovies.map((movie, index) => (
         <div
           key={movie.id}
-          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out ${
+            index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
           }`}
           style={{ backgroundImage: `url(${movie.backdrop || movie.poster})` }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+          {/* Multiple Gradient Overlays for Better Readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/30"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-transparent to-black/40"></div>
         </div>
       ))}
 
       {/* Navigation Arrows */}
       <button
         onClick={goToPrevious}
-        className={`absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/80 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 ${
-          isHovered ? 'opacity-100' : 'opacity-0'
+        className={`absolute left-8 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/80 text-white p-4 rounded-full transition-all duration-300 backdrop-blur-sm ${
+          isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
         }`}
       >
         <ChevronLeft className="h-6 w-6" />
@@ -72,62 +75,105 @@ const HeroCarousel = () => {
 
       <button
         onClick={goToNext}
-        className={`absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/80 text-white p-3 rounded-full transition-all duration-300 ${
-          isHovered ? 'opacity-100' : 'opacity-0'
+        className={`absolute right-8 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/80 text-white p-4 rounded-full transition-all duration-300 backdrop-blur-sm ${
+          isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
         }`}
       >
         <ChevronRight className="h-6 w-6" />
       </button>
 
-      {/* Content */}
+      {/* Main Content */}
       <div className="relative z-10 flex items-center h-full">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent animate-fade-in">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="max-w-3xl">
+            {/* Movie Title */}
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 bg-gradient-to-r from-white via-white to-gray-300 bg-clip-text text-transparent leading-tight transform transition-all duration-1000 animate-fade-in">
               {currentMovie.title}
             </h1>
             
-            <div className="flex items-center space-x-4 mb-6">
-              <span className="bg-blue-500 text-white px-3 py-1 rounded text-sm font-bold">
-                ★ {currentMovie.rating}
-              </span>
-              <span className="text-gray-300">{currentMovie.year}</span>
+            {/* Movie Metadata */}
+            <div className="flex items-center flex-wrap gap-4 mb-6">
+              <div className="flex items-center gap-1 bg-yellow-500 text-black px-3 py-1.5 rounded-lg text-sm font-bold shadow-lg">
+                <span>★</span>
+                <span>{currentMovie.rating}</span>
+              </div>
+              <span className="text-gray-300 font-medium">{currentMovie.year}</span>
               <span className="text-gray-300">{currentMovie.duration}</span>
-              <span className="bg-gray-800 text-white px-2 py-1 rounded text-xs">
+              <div className="bg-red-600 text-white px-3 py-1.5 rounded-lg text-sm font-semibold">
                 {currentMovie.genre}
-              </span>
+              </div>
             </div>
 
-            <p className="text-lg text-gray-300 mb-8 leading-relaxed">
+            {/* Movie Description */}
+            <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl line-clamp-3">
               {currentMovie.description}
             </p>
 
-            <div className="flex space-x-4">
-              <button className="bg-white text-black px-8 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-all duration-200 flex items-center space-x-2 transform hover:scale-105">
-                <span>▶</span>
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <button className="group relative overflow-hidden bg-white text-black px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-200 transition-all duration-300 flex items-center justify-center gap-3 transform hover:scale-105 shadow-2xl">
+                <Play className="h-6 w-6 fill-current" />
                 <span>Play Now</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
-              <button className="bg-gray-800/80 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition-all duration-200 backdrop-blur-sm transform hover:scale-105">
-                + My List
+              
+              <button className="bg-gray-800/80 hover:bg-gray-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-3 transform hover:scale-105 border border-gray-600/50">
+                <Plus className="h-6 w-6" />
+                <span>My List</span>
               </button>
+              
+              <button className="bg-gray-800/60 hover:bg-gray-700 text-white px-6 py-4 rounded-xl font-semibold transition-all duration-300 backdrop-blur-sm flex items-center justify-center transform hover:scale-105 border border-gray-600/30">
+                <Info className="h-6 w-6" />
+              </button>
+            </div>
+
+            {/* Additional Info */}
+            <div className="flex items-center gap-6 text-sm text-gray-400">
+              <span>HD</span>
+              <span>5.1 Surround</span>
+              <span>CC</span>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Volume Control */}
+      <button
+        onClick={() => setIsMuted(!isMuted)}
+        className={`absolute bottom-32 right-8 z-20 bg-black/50 hover:bg-black/80 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm ${
+          isHovered ? 'opacity-100' : 'opacity-60'
+        }`}
+      >
+        {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+      </button>
+
       {/* Navigation Dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex space-x-2">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
         {featuredMovies.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`relative transition-all duration-500 ${
               index === currentSlide 
-                ? 'bg-blue-500 scale-125' 
-                : 'bg-white/50 hover:bg-white/80'
-            }`}
-          />
+                ? 'w-12 h-3 bg-red-600' 
+                : 'w-3 h-3 bg-white/40 hover:bg-white/60'
+            } rounded-full`}
+          >
+            {index === currentSlide && (
+              <div className="absolute inset-0 bg-red-600 rounded-full animate-pulse"></div>
+            )}
+          </button>
         ))}
+      </div>
+
+      {/* Slide Progress Indicator */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-800/50">
+        <div 
+          className="h-full bg-red-600 transition-all duration-300 ease-linear"
+          style={{ 
+            width: `${((currentSlide + 1) / featuredMovies.length) * 100}%` 
+          }}
+        ></div>
       </div>
     </div>
   );
