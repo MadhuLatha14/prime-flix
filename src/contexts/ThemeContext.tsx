@@ -5,6 +5,7 @@ interface ThemeContextType {
   isDarkMode: boolean;
   toggleTheme: () => void;
   theme: {
+    isDarkMode: boolean;
     primary: string;
     accent: string;
     background: string;
@@ -33,8 +34,9 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   };
 
   const theme = {
-    primary: isDarkMode ? 'bg-blue-600' : 'bg-blue-700',
-    accent: isDarkMode ? 'bg-blue-500' : 'bg-blue-600',
+    isDarkMode,
+    primary: isDarkMode ? 'bg-red-600' : 'bg-red-700',
+    accent: isDarkMode ? 'bg-red-500' : 'bg-red-600',
     background: isDarkMode ? 'bg-black' : 'bg-gray-50',
     surface: isDarkMode ? 'bg-gray-900' : 'bg-white',
     text: isDarkMode ? 'text-white' : 'text-gray-900',

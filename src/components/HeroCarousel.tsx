@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Play, Plus, Info, Volume2, VolumeX } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Plus, Info } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import moviesData from '../data/movies.json';
 
@@ -8,7 +8,6 @@ const HeroCarousel = () => {
   const { theme } = useTheme();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
 
   // Create featured movies array from different categories
   const featuredMovies = [
@@ -17,26 +16,18 @@ const HeroCarousel = () => {
     ...moviesData.popular.slice(0, 2)
   ];
 
-  // Auto-slide functionality
+  // Auto-slide functionality every 2 seconds
   useEffect(() => {
     if (!isHovered) {
       const interval = setInterval(() => {
         setCurrentSlide((prev) => (prev + 1) % featuredMovies.length);
-      }, 8000);
+      }, 2000);
       return () => clearInterval(interval);
     }
   }, [isHovered, featuredMovies.length]);
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
-  };
-
-  const goToPrevious = () => {
-    setCurrentSlide((prev) => (prev - 1 + featuredMovies.length) % featuredMovies.length);
-  };
-
-  const goToNext = () => {
-    setCurrentSlide((prev) => (prev + 1) % featuredMovies.length);
   };
 
   const currentMovie = featuredMovies[currentSlide];
@@ -62,25 +53,6 @@ const HeroCarousel = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-transparent to-black/40"></div>
         </div>
       ))}
-
-      {/* Navigation Arrows */}
-      <button
-        onClick={goToPrevious}
-        className={`absolute left-8 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/80 text-white p-4 rounded-full transition-all duration-300 backdrop-blur-sm ${
-          isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
-        }`}
-      >
-        <ChevronLeft className="h-6 w-6" />
-      </button>
-
-      <button
-        onClick={goToNext}
-        className={`absolute right-8 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/80 text-white p-4 rounded-full transition-all duration-300 backdrop-blur-sm ${
-          isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
-        }`}
-      >
-        <ChevronRight className="h-6 w-6" />
-      </button>
 
       {/* Main Content */}
       <div className="relative z-10 flex items-center h-full">
@@ -136,16 +108,6 @@ const HeroCarousel = () => {
           </div>
         </div>
       </div>
-
-      {/* Volume Control */}
-      <button
-        onClick={() => setIsMuted(!isMuted)}
-        className={`absolute bottom-32 right-8 z-20 bg-black/50 hover:bg-black/80 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm ${
-          isHovered ? 'opacity-100' : 'opacity-60'
-        }`}
-      >
-        {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
-      </button>
 
       {/* Navigation Dots */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
