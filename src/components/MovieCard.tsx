@@ -26,17 +26,14 @@ const MovieCard = ({ movie }: MovieCardProps) => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [isLiked, setIsLiked] = useState(false);
-  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
     
-    // Set timeout for 2 seconds to show video preview
+    // Show video preview immediately on hover
     if (movie.previewVideoUrl) {
-      hoverTimeoutRef.current = setTimeout(() => {
-        setShowVideo(true);
-      }, 2000);
+      setShowVideo(true);
     }
   };
 
@@ -44,12 +41,6 @@ const MovieCard = ({ movie }: MovieCardProps) => {
     setIsHovered(false);
     setShowVideo(false);
     setVideoLoaded(false);
-    
-    // Clear the timeout if user leaves before 2 seconds
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
-      hoverTimeoutRef.current = null;
-    }
 
     // Pause and reset video
     if (videoRef.current) {
@@ -85,16 +76,11 @@ const MovieCard = ({ movie }: MovieCardProps) => {
     setIsLiked(!isLiked);
   };
 
-  // Cleanup timeout on unmount
-  useEffect(() => {
-    return () => {
-      if (hoverTimeoutRef.current) {
-        clearTimeout(hoverTimeoutRef.current);
-      }
-    };
-  }, []);
+  const handleClick = () => {
+    const event = new CustomEvent('openPreviewModal', { detail: movie });
+    window.dispatchEvent(event);
+  };
 
-  // Remove click handler for opening modal - only hover behavior now
   return (
     <div
       className={`group relative min-w-[280px] cursor-pointer transition-all duration-500 ease-out ${
@@ -102,6 +88,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
       }`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
     >
       {/* Main Card Container */}
       <div className={`relative overflow-hidden rounded-xl shadow-2xl transition-all duration-500 ${
@@ -119,7 +106,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
             }`}
           />
           
-          {/* Video Preview - Only shows on hover after 2 seconds */}
+          {/* Video Preview */}
           {showVideo && movie.previewVideoUrl && (
             <video
               ref={videoRef}
@@ -181,7 +168,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
         <div className={`absolute top-4 right-4 flex gap-2 transition-all duration-500 ${
           isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
         }`}>
-          {/* Video Controls - Only show when video is playing */}
+          {/* Video Controls */}
           {showVideo && videoLoaded && (
             <button
               onClick={toggleMute}
@@ -204,7 +191,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
           </button>
         </div>
 
-        {/* Play Button Overlay - Show on Hover when no video is playing */}
+        {/* Play Button Overlay - Show on Hover */}
         <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
           isHovered && !showVideo ? 'opacity-100' : 'opacity-0'
         }`}>

@@ -58,7 +58,7 @@ const VideoSection = ({ activeCategory }: VideoSectionProps) => {
         {activeCategory === 'all' ? (
           <div className="space-y-12 animate-fade-in">
             <Carousel title="Trending Now" movies={moviesData.trending} />
-            <Carousel title="Popular on PrimeFlix" movies={moviesData.popular} />
+            <Carousel title="Popular on StreamFlix" movies={moviesData.popular} />
             <Carousel title="Action Movies" movies={moviesData.action} />
             <Carousel title="Drama Series" movies={moviesData.drama} />
             <Carousel title="Comedy Shows" movies={moviesData.comedy} />
